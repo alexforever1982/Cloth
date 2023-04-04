@@ -17,14 +17,14 @@ void main()
 	vec3 V = normalize(camera - FragPos);
 	vec3 L = normalize(lightPos);
 	vec3 H = normalize(V + L);
-	vec3 R = reflect(-L, Normal);
 	
-	vec3 ambient = 0.1 * color;
+	vec3 ambient = 0.05 * color;
 	
-	float diff = max(dot(L, Normal), 0.0);
+	vec3 normal = normalize(Normal);
+	float diff = max(dot(L, normal), 0.0);
 	vec3 diffuse = diff * color;
 	
-	float spec = pow(max(dot(Normal, H), 0.0), 32.0);
+	float spec = pow(max(dot(normal, H), 0.0), 32.0);
 	vec3 specular = vec3(0.3) * spec;
 	
 	FragColor = vec4(ambient + diffuse + specular, 1.0);
