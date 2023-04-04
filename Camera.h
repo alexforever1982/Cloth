@@ -32,6 +32,9 @@ public:
 	Camera(const glm::vec3 &position) noexcept;
 
 	const glm::vec3 &GetPosition() const noexcept;
+	const glm::vec3 &GetFront() const noexcept;
+	const glm::vec3 &GetRight() const noexcept;
+	const glm::vec3 &GetUp()    const noexcept;
 
 	glm::mat4 GetView() const noexcept;
 	glm::mat4 GetProjection(float aspect) const noexcept;
