@@ -9,7 +9,5 @@ Cloth simulation (in progress)
     <img src="/demo2.png" width="600px"</img> 
 </div>
 
-<br>Materials: plastic, gold, iron
-
 Controls: W, S, A, D + mouse
 Wireframe mode: F (on/off)
