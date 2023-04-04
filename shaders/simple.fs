@@ -15,11 +15,11 @@ void main()
 	vec3 color = texture(diffuse_map, TexCoords).rgb;
 	
 	vec3 V = normalize(camera - FragPos);
-	vec3 L = normalize(lightPos - FragPos);
+	vec3 L = normalize(lightPos);
 	vec3 H = normalize(V + L);
 	vec3 R = reflect(-L, Normal);
 	
-	vec3 ambient = 0.05 * color;
+	vec3 ambient = 0.1 * color;
 	
 	float diff = max(dot(L, Normal), 0.0);
 	vec3 diffuse = diff * color;
