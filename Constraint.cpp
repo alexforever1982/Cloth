@@ -4,9 +4,9 @@
 //==============================================================================
 
 Constraint::Constraint(Particle *p1, Particle *p2, float stiffness) noexcept :
-particle1(p1),
-particle2(p2),
-compliance(1.0f / stiffness)
+	particle1(p1),
+	particle2(p2),
+	compliance(1.0f / stiffness)
 {
 }
 
