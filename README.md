@@ -10,4 +10,4 @@ Cloth simulation (in progress)
 </div>
 
 Controls: W, S, A, D + mouse
-Wireframe mode: F (on/off)
+<br>Wireframe mode: F (on/off)
