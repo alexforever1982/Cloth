@@ -134,7 +134,7 @@ Cloth::Cloth(float width, float height, float step) noexcept
 
 	SetMass(1.0f);
 	SetStiffness(1.0e3f);
-	SetBend(0.0001f);
+	SetBend(0.0005f);
 }
 
 //==============================================================================
@@ -167,7 +167,7 @@ Cloth::Cloth(const std::vector<float> &vertices, const std::vector<uint> &indice
 
 	SetMass(1.0f);
 	SetStiffness(1.0e3f);
-	SetBend(0.001f);
+	SetBend(0.0005f);
 
 	CalculateNormals();
 	GenerateConstraints();
