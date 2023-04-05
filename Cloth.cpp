@@ -116,6 +116,13 @@ Cloth::Cloth(float width, float height, float step) noexcept
 			}
 		}
 	}
+
+	uvs.reserve(particles.size());
+	for (const auto particle : particles)
+	{
+		const auto &P = particle->GetPosition();
+		uvs.emplace_back(P.x, P.y);
+	}
 	
 	const auto vertices_size = static_cast<uint>(particles.size());
 	topology = new Topology(vertices_size, indices);
@@ -144,6 +151,13 @@ Cloth::Cloth(const std::vector<float> &vertices, const std::vector<uint> &indice
 		const auto z = vertices[i + 2];
 
 		particles.push_back(new Particle(glm::vec3(x, y, z)));
+	}
+
+	uvs.reserve(particles.size());
+	for (const auto particle : particles)
+	{
+		const auto &P = particle->GetPosition();
+		uvs.emplace_back(P.x, P.y);
 	}
 
 	const auto vertices_size = static_cast<uint>(particles.size());
@@ -219,6 +233,22 @@ std::vector<float> Cloth::GetNormals() const noexcept
 	}
 
 	return N;
+}
+
+//==============================================================================
+
+std::vector<float> Cloth::GetUVs() const noexcept
+{
+	std::vector<float> UV;
+	UV.reserve(2 * uvs.size());
+
+	for (const auto &uv : uvs)
+	{
+		UV.push_back(uv.x);
+		UV.push_back(uv.y);
+	}
+
+	return UV;
 }
 
 //==============================================================================
