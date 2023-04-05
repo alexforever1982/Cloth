@@ -31,10 +31,12 @@ void Physics::SetGravity(const glm::vec3 &value) noexcept
 
 void Physics::GetCloth(std::vector<float> &vertices,
 	                   std::vector<float> &normals,
+	                   std::vector<float> &uvs,
 	                   std::vector<uint>  &indices) const noexcept
 {
 	vertices = cloth->GetVertices();
 	normals  = cloth->GetNormals();
+	uvs      = cloth->GetUVs();
 	indices  = cloth->GetIndices();
 }
 
