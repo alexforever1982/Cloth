@@ -1,5 +1,5 @@
 # Cloth
-Cloth simulation (in progress, so far without self-collision)
+Cloth simulation (in progress, without self-collision yet)
 
 <div align="left">
     <img src="/demo1.png" width="400px"</img> 
