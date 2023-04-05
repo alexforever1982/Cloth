@@ -7,13 +7,12 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 #include "Camera.h"
+#include "Cloth.h"
 #include "Drawable.h"
 #include "Physics.h"
 #include "Ray.h"
 #include "Shader.h"
 #include "Texture.h"
-
-#include "Cloth.h"
 
 #include "GLFW/glfw3.h"
 
@@ -309,7 +308,7 @@ glm::vec3 GetMouseShift(float x1, float y1, float x2, float y2, const glm::vec3 
 void Prepare() noexcept
 {
 	camera   = new Camera(glm::vec3(0.0f, 0.45f, 1.5f));
-	shader   = new Shader("shaders\\simple.vs", "shaders\\simple.fs");
+	shader   = new Shader("shaders\\phong.vs", "shaders\\phong.fs");
 	texture  = new Texture;
 	drawable = new Drawable;
 	physics  = new Physics();
@@ -323,17 +322,18 @@ void Prepare() noexcept
 	const auto nx = static_cast<uint>(w / s);
 	const auto ny = static_cast<uint>(h / s);
 
-	physics->FixClothPoint((ny + 1) *       1  - 1);
+	physics->FixClothPoint((ny + 1) - 1);
 	physics->FixClothPoint((ny + 1) * (nx + 1) - 1);
 
-	texture->Load("textures\\cloth.png");
+	texture->Load("textures\\cloth.png");;
 
 	std::vector<float> vertices;
 	std::vector<float> normals;
+	std::vector<float> uvs;
 	std::vector<uint>  indices;
 
-	physics->GetCloth(vertices, normals, indices);
-	drawable->SetBuffers(vertices, normals, vertices, indices);
+	physics->GetCloth(vertices, normals, uvs, indices);
+	drawable->SetBuffers(vertices, normals, uvs, indices);
 }
 
 //==============================================================================
@@ -351,10 +351,11 @@ void Render()
 
 	std::vector<float> vertices;
 	std::vector<float> normals;
+	std::vector<float> uvs;
 	std::vector<uint>  indices;
 
-	physics->GetCloth(vertices, normals, indices);
-	drawable->UpdateBuffers(vertices, normals, vertices);
+	physics->GetCloth(vertices, normals, uvs, indices);
+	drawable->UpdateBuffers(vertices, normals, uvs);
 
 	shader->Use();
 	shader->SetMat4("model", model);
