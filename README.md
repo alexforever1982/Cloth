@@ -10,7 +10,7 @@ Cloth simulation (in progress, without self-collision yet)
 </div>
 
 <div align="left">
-    <img src="/demo22.png" width="400px"</img> 
+    <img src="/demo3.png" width="400px"</img> 
 </div>
 
 Controls: W, S, A, D + mouse
