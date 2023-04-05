@@ -25,6 +25,7 @@ private:
 	std::vector<Particle*> particles;
 	std::vector<uint> indices;
 	std::vector<glm::vec3> normals;
+	std::vector<glm::vec2> uvs;
 	float inv_mass;
 
 	Topology *topology;
@@ -35,9 +36,9 @@ private:
 private:
 	void AddNoise(float value) noexcept;
 
-	void GenerateConstraints() noexcept;
+	void GenerateConstraints()         noexcept;
 	void GenerateDistanceConstraints() noexcept;
-	void GenerateBendConstraints() noexcept;
+	void GenerateBendConstraints()     noexcept;
 
 public:
 	Cloth(float width, float height, float step) noexcept;
@@ -49,28 +50,29 @@ public:
 
 	std::vector<float> GetVertices()      const noexcept;
 	std::vector<float> GetNormals()       const noexcept;
+	std::vector<float> GetUVs()           const noexcept;
 	const std::vector<uint> &GetIndices() const noexcept;
 
-	void SetMass(float value) noexcept;
-	void SetStiffness(float value) noexcept;
-	void SetBend(float value) noexcept;
+	void SetMass      (float value) noexcept;
+	void SetStiffness (float value) noexcept;
+	void SetBend      (float value) noexcept;
 
-	void CalculateNormals() noexcept;
-	void ClearForces() noexcept;
+	void CalculateNormals()                 noexcept;
+	void ClearForces()                      noexcept;
 	void AddGravity(const glm::vec3 &value) noexcept;
 
-	void PredictPosition(float dt) noexcept;
-	void UpdateVelocity(float dt, float damping) noexcept;
-	void UpdatePosition() noexcept;
+	void PredictPosition (float dt)                noexcept;
+	void UpdateVelocity  (float dt, float damping) noexcept;
+	void UpdatePosition  ()                        noexcept;
 
 	void ProjectConstraints(float dt) noexcept;
 
 	bool Raycast(const Ray &ray, uint &point, glm::vec3 &P) const noexcept;
 
-	void FixParticle(uint index) noexcept;
-	void FreeParticle(uint index) noexcept;
-	void MoveParticle(uint index, const glm::vec3 &translation) noexcept;
-	void MoveFixedParticle(uint index, const glm::vec3 &translation) noexcept;
+	void FixParticle       (uint index) noexcept;
+	void FreeParticle      (uint index) noexcept;
+	void MoveParticle      (uint index, const glm::vec3 &translation) noexcept;
+	void MoveFixedParticle (uint index, const glm::vec3 &translation) noexcept;
 };
 
 //==============================================================================
