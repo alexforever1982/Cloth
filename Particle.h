@@ -33,12 +33,12 @@ public:
 
 	void AddAcceleration(const glm::vec3 &value) noexcept;
 
-	void PredictPosition(float dt) noexcept;
-	void UpdateVelocity(float dt, float damping) noexcept;
+	void PredictPosition (float dt) noexcept;
+	void UpdateVelocity  (float dt, float damping) noexcept;
 	void UpdatePosition() noexcept;
 
-	void Move(const glm::vec3 &step) noexcept;
-	void MoveFixed(const glm::vec3 &step) noexcept;
+	void Move      (const glm::vec3 &step) noexcept;
+	void MoveFixed (const glm::vec3 &step) noexcept;
 };
 
 //==============================================================================
